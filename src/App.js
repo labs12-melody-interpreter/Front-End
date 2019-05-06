@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import StyleDropdown from "./components/StyleDropdown"
-
+import axios from "axios"
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       artist: "Bach",
       note: "",
@@ -14,33 +13,41 @@ class App extends Component {
   handleChange = (event) => {
     this.setState({note: event.target.value});
   }
-
+  
   handleSubmit = (event) => {
-    // todo: post request
+    event.preventDefault()
+    console.log("hi")
+    const FileDownload = require('js-file-download');
+    axios.post("http://localhost:5000/generator/", this.state)
+    .then(res=>{
+      console.log("hello")
+      console.log(res.data)
+      FileDownload(res.data,'test_output.mid')
+    })
+    .catch((error) => {
+        // ...
+    });
   }
-
   handleArtistDropdown = (event) => {
     event.preventDefault()
     this.setState({
       artist: event.target.value
     })
   }
-
   handleStyleDropdown = (event) => {
     event.preventDefault()
     this.setState({
       style: event.target.value
     })
   }
-
   render() {
     console.log(this.state)
     return (
       <div>
-        <form>
+        <form action = "/generator/" method = "POST">
               <input id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
-              <button id="note-button">Submit Note</button>
-              <select id = "Artists" name="Artists" onChange={this.handleArtistDropdown}>
+              <button id="note-button" onClick={this.handleSubmit}>Submit Note</button>
+              <select id = "artist" name="artist" onChange={this.handleArtistDropdown}>
                   <option value="Bach">Bach</option>
                   <option value="Chopin">Chopin</option>
                   <option value="Mozart">Mozart</option>
@@ -51,5 +58,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
