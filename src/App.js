@@ -19,7 +19,7 @@ class App extends Component {
     event.preventDefault()
     const FileDownload = require('js-file-download');
     //http://localhost:5000/generator/
-    axios("url.com", {
+    axios("https://music-interpolator-backend.herokuapp.com/generator/", {
       method: "POST",
       data: {
         artist: this.state.artist,
