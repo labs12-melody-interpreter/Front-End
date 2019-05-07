@@ -18,7 +18,8 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const FileDownload = require('js-file-download');
-    axios.post("http://localhost:5000/generator/", this.state,
+    //http://localhost:5000/generator/
+    axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
     {
       responseType: 'arraybuffer',
     })
