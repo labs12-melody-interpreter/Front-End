@@ -19,6 +19,17 @@ class App extends Component {
     event.preventDefault()
     const FileDownload = require('js-file-download');
     //http://localhost:5000/generator/
+    axios("url.com", {
+      method: "POST",
+      data: {
+        artist: this.state.artist,
+        note: this.state.note,
+        style: this.state.style
+
+      },
+      headers: {
+          'Access-Control-Allow-Origin': '*',
+    }})/*
     axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
     {
       responseType: 'arraybuffer',
@@ -30,7 +41,7 @@ class App extends Component {
     })
     .catch((error) => {
         // ...
-    });
+    });*/
   }
  
 
