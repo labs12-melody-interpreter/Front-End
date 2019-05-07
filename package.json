@@ -8,6 +8,7 @@
     "js-file-download": "^0.4.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-piano": "^3.1.2",
     "react-scripts": "3.0.0"
   },
   "scripts": {
