@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import StyleDropdown from "./components/StyleDropdown"
 import axios from "axios"
+
 class App extends Component {
   constructor() {
     super()
@@ -16,18 +17,22 @@ class App extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log("hi")
     const FileDownload = require('js-file-download');
-    axios.post("http://localhost:5000/generator/", this.state)
-    .then(res=>{
-      console.log("hello")
-      console.log(res.data)
+    axios.post("http://localhost:5000/generator/", this.state,
+    {
+      responseType: 'arraybuffer',
+    })
+    .then((res)=>{
+      console.log(res.data, "res.data")
       FileDownload(res.data,'test_output.mid')
+      
     })
     .catch((error) => {
         // ...
     });
   }
+ 
+
   handleArtistDropdown = (event) => {
     event.preventDefault()
     this.setState({
