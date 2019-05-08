@@ -33,12 +33,12 @@ const StyleDropdown = (props) => {
                         <option value="fun">fun</option>
                         <option value="imp">imp</option>
                         <option value="maz">maz</option>
-                        <option value="noc">noc</option>
+                        <option value="nocturne">nocturne</option>
                         <option value="nou">nou</option>
-                        <option value="pol">pol</option>
+                        <option value="polonaise">polonaise</option>
                         <option value="pre">pre</option>
                         <option value="ron">ron</option>
-                        <option value="sch">sch</option>
+                        <option value="scherzo">scherzo</option>
                         <option value="son">son</option>
                         <option value="tar">tar</option>
                         <option value="val">val</option>

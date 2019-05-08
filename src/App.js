@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import StyleDropdown from "./components/StyleDropdown"
+import axios from "axios"
+import MidiPiano from "./components/MidiPiano"
 
 class App extends Component {
   constructor() {
     super()
-
     this.state = {
       artist: "Bach",
       note: "",
@@ -14,10 +15,25 @@ class App extends Component {
   handleChange = (event) => {
     this.setState({note: event.target.value});
   }
-
+  
   handleSubmit = (event) => {
-    // todo: post request
+    event.preventDefault()
+    const FileDownload = require('js-file-download');
+    //http://localhost:5000/generator/
+    axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
+    {
+      responseType: 'blob',
+    })
+    .then((res)=>{
+      console.log(res.data, "res.data")
+      FileDownload(res.data,'test_output.mid')
+      
+    })
+    .catch((error) => {
+        // ...
+    });
   }
+ 
 
   handleArtistDropdown = (event) => {
     event.preventDefault()
@@ -25,31 +41,29 @@ class App extends Component {
       artist: event.target.value
     })
   }
-
   handleStyleDropdown = (event) => {
     event.preventDefault()
     this.setState({
       style: event.target.value
     })
   }
-
   render() {
     console.log(this.state)
     return (
       <div>
-        <form>
+        <form action = "/generator/" method = "POST">
               <input id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
-              <button id="note-button">Submit Note</button>
-              <select id = "Artists" name="Artists" onChange={this.handleArtistDropdown}>
+              <button id="note-button" onClick={this.handleSubmit}>Submit Note</button>
+              <select id = "artist" name="artist" onChange={this.handleArtistDropdown}>
                   <option value="Bach">Bach</option>
                   <option value="Chopin">Chopin</option>
                   <option value="Mozart">Mozart</option>
               </select>
               <StyleDropdown artist={this.state.artist} handleStyleDropdown={this.handleStyleDropdown} />
           </form>
+          <MidiPiano />
       </div>
     );
   }
 }
-
 export default App;
