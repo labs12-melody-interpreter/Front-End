@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import StyleDropdown from "./components/StyleDropdown"
 import axios from "axios"
+import { saveAs } from 'file-saver';
 
 class App extends Component {
   constructor() {
@@ -19,20 +20,9 @@ class App extends Component {
     event.preventDefault()
     const FileDownload = require('js-file-download');
     //http://localhost:5000/generator/
-    axios("https://music-interpolator-backend.herokuapp.com/generator/", {
-      method: "POST",
-      data: {
-        artist: this.state.artist,
-        note: this.state.note,
-        style: this.state.style
-
-      },
-      headers: {
-          'Access-Control-Allow-Origin': '*',
-    }})/*
     axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
     {
-      responseType: 'arraybuffer',
+      responseType: 'blob',
     })
     .then((res)=>{
       console.log(res.data, "res.data")
@@ -41,7 +31,7 @@ class App extends Component {
     })
     .catch((error) => {
         // ...
-    });*/
+    });
   }
  
 
