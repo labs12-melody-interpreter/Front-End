@@ -1,6 +1,7 @@
 import React from "react"
 import  Midi  from "@tonejs/midi"
-import { TonePlayToggle } from "@tonejs/ui"
+import Tone from "tone"
+
 
 function fileDrop() {
   if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
@@ -34,12 +35,43 @@ function parseFile(file){
   reader.onload = function(e){
     const midi = new Midi(e.target.result)
     document.querySelector("#ResultsText").value = JSON.stringify(midi, undefined, 2)
-    document.querySelector('#tone-play-toggle').removeAttribute('disabled')
+    //document.querySelector('#tone-play-toggle').removeAttribute('disabled')
     currentMidi = midi
   }
   reader.readAsArrayBuffer(file)
 }
-
+function play(){
+  console.log("currentMidi",currentMidi)
+  const synths = []
+  document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
+    const playing = e.detail
+    if (playing && currentMidi){
+      const now = Tone.now() + 0.5
+      currentMidi.tracks.forEach(track => {
+        //create a synth for each track
+        const synth = new Tone.PolySynth(10, Tone.Synth, {
+          envelope : {
+            attack : 0.02,
+            decay : 0.1,
+            sustain : 0.3,
+            release : 1
+          }
+        }).toMaster()
+        synths.push(synth)
+        //schedule all of the events
+        track.notes.forEach(note => {
+          synth.triggerAttackRelease(note.name, note.duration, note.time + now, note.velocity)
+        })
+      })
+    } else {
+      //dispose the synth and make a new one
+      while(synths.length){
+        const synth = synths.shift()
+        synth.dispose()
+      }
+    }
+  })
+}
 const ToneJS = () => {
   
   
@@ -54,13 +86,13 @@ const ToneJS = () => {
               <div id="Text">
                 Drop a midi file here
               </div>
-              <input type="file" accept="audio/midi"  onChange={fileDrop}/>
+              <input type="file" accept="audio/midi"  onClick={fileDrop}/>
             </div>
             <div id="Results">
               <textarea id="ResultsText" placeholder="json output..." defaultValue={""} />
             </div>
-            {/* <TonePlayToggle disabled id="tone-play-toggle"/> */}
-            <fileDrop />
+            <tone-play-toggle disabled id="tone-play-toggle" onClick={ play }/> 
+            
           </tone-content>
         </div>
       );
