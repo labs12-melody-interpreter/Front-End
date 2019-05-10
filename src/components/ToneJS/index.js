@@ -1,7 +1,7 @@
 import React from "react"
 import  Midi  from "@tonejs/midi"
 import { } from "@tonejs/ui"
-import {Tone} from "tone"
+import Tone from "tone"
 
 function fileDrop() {
   if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
@@ -44,9 +44,9 @@ function parseFile(file){
 function play(){
   console.log("currentMidi",currentMidi)
   const synths = []
-  document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
-    const playing = e.detail
-    if (playing && currentMidi){
+  //document.querySelector('tone-play-toggle').addEventListener('play', (e) => {
+    //const playing = e.detail
+    if (currentMidi){
       // const now = new Tone.now() + 0.5
       currentMidi.tracks.forEach(track => {
         //create a synth for each track
@@ -71,12 +71,10 @@ function play(){
         synth.dispose()
       }
     }
-  })
+  //})
 }
 
 const ToneJS = () => {
-  
-  
     return (
         <div>
           <style type="text/css" dangerouslySetInnerHTML={{__html: "\n\t\t#FileDrop{\n\t\t\tposition: relative;\n\t\t\twidth: 100%;\n\t\t\theight: 100px;\n\t\t\tborder: 2px dashed black;\n\t\t\tcolor: black;\n\t\t\tmargin: 20px auto;\n\t\t}\n\t\t#FileDrop.Hover{\n\t\t\tbackground-color: black;\n\t\t\tcolor: white;\n\t\t}\n\t\t#FileDrop input {\n\t\t\tposition: absolute;\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\topacity: 0;\n\t\t\tleft: 0px;\n\t\t\ttop: 0px;\n\t\t}\n\t\t#FileDrop #Text {\n\t\t\tposition: absolute;\n\t\t\twidth: 100%;\n\t\t\theight: 20px;\n\t\t\tline-height: 20px;\n\t\t\tleft: 0px;\n\t\t\ttop: 50%;\n\t\t\ttransform: translate(0, -50%);\n\t\t\ttext-align: center;\n\t\t}\n\t\ttextarea {\n\t\t\tfont-family: monospace;\n\t\t\theight: 300px;\n\t\t\twidth: 100%;\n\t\t\tdisplay: inline-block;\n\t\t\tposition: relative;\n\t\t\tfloat: left;\n\t\t}\n\t\t#Results {\n\t\t\tposition: relative;\n\t\t\twidth: 100%;\n\t\t\tmargin: 10px auto;\n\t\t}\n\t\t#Description {\n\t\t\tposition: relative;\n\t\t\twidth: 100%;\n\t\t\ttext-align: center;\n\t\t\theight: 40px;\n\t\t\tfont-size: 16px;\n\t\t\tmargin: 10px auto;\n\t\t\tfont-family: sans-serif;\n\t\t}\n\t\ttone-play-toggle {\n\t\t\tmargin-top: 10px;\n\t\t}\n\t" }} />
