@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "@tonejs/midi": "^2.0.0",
+    "@tonejs/ui": "^0.0.8",
     "axios": "^0.18.0",
     "js-file-download": "^0.4.5",
     "react": "^16.8.6",
