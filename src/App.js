@@ -22,7 +22,8 @@ class App extends Component {
     const FileDownload = require('js-file-download');
     //http://localhost:5000/generator/
     //https://music-interpolator-backend.herokuapp.com/generator/
-    axios.post("http://musicinterpolatorbackend-env-1.n8t342ngdz.us-east-2.elasticbeanstalk.com/", this.state,
+    //http://musicinterpolatorbackend-env-1.n8t342ngdz.us-east-2.elasticbeanstalk.com/ *AWS Not working
+    axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
     {
       responseType: 'blob',
     })
