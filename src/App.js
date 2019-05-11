@@ -21,7 +21,8 @@ class App extends Component {
     event.preventDefault()
     const FileDownload = require('js-file-download');
     //http://localhost:5000/generator/
-    axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
+    //https://music-interpolator-backend.herokuapp.com/generator/
+    axios.post("http://musicinterpolatorbackend-env-1.n8t342ngdz.us-east-2.elasticbeanstalk.com/", this.state,
     {
       responseType: 'blob',
     })

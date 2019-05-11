@@ -39,7 +39,7 @@ const StyleDropdown = (props) => {
                         <option value="pre">pre</option>
                         <option value="ron">ron</option>
                         <option value="scherzo">scherzo</option>
-                        <option value="son">son</option>
+                        <option value="sonata">sonata</option>
                         <option value="tar">tar</option>
                         <option value="val">val</option>
                     </select>
