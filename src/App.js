@@ -3,7 +3,6 @@ import StyleDropdown from "./components/StyleDropdown"
 import axios from "axios"
 import MidiPiano from "./components/MidiPiano"
 import ToneJS from "./components/ToneJS"
-import MusicLib from "./components/MusicLib"
 
 class App extends Component {
   constructor() {
@@ -79,7 +78,6 @@ class App extends Component {
               </select>
               <StyleDropdown artist={this.state.artist} handleStyleDropdown={this.handleStyleDropdown} />
           </form>
-          <MusicLib />
           <ToneJS />
           <MidiPiano />
       </div>
