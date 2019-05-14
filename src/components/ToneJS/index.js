@@ -2,6 +2,7 @@ import React from "react"
 import  Midi  from "@tonejs/midi"
 import { } from "@tonejs/ui"
 import Tone from "tone"
+import MusicLib from "../MusicLib"
 
 function fileDrop() {
   if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
@@ -89,6 +90,7 @@ const ToneJS = () => {
               <textarea id="ResultsText" placeholder="json output..." defaultValue={""} />
             </div>
             <tone-play-toggle disabled id="tone-play-toggle" onClick={ play }/> 
+            <MusicLib id="tone-play-toggle" onClick={ play } />
           </tone-content>
         </div>
       );

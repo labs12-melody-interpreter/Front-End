@@ -1,0 +1,26 @@
+import React, {Component} from 'react'
+import './styles.css'
+import PlayPause from './PlayPause'
+
+class MusicLib extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isPlaying: false
+    }
+  }
+  render() {
+    const { isPlaying } = this.state
+    return (
+      <div>
+        <PlayPause
+          toggle={isPlaying}
+          onClick={() => this.setState({isPlaying: !isPlaying})}
+        />
+      </div>
+    )
+  }
+
+}
+
+export default MusicLib
