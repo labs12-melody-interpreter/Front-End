@@ -16,6 +16,7 @@ class MusicLib extends Component {
         <PlayPause
           toggle={isPlaying}
           onClick={() => this.setState({isPlaying: !isPlaying})}
+          play={this.props.play}
         />
       </div>
     )

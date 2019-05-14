@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import { Motion, spring } from 'react-motion'
 
 class PlayPause extends Component {
+  onClickPlay = event => {
+    this.props.onClick()
+    this.props.play()
+  }
   render() {
-    const { toggle, onClick } = this.props
+    const { toggle } = this.props
     
     return(
       <Motion
@@ -13,7 +17,7 @@ class PlayPause extends Component {
           <button
             type="button"
             className="play-pause"
-            onClick={onClick}
+            onClick={this.onClickPlay}
           >
             <span
               className="play-pause__playhead"
