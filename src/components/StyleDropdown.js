@@ -22,7 +22,7 @@ const StyleDropdown = (props) => {
                 <div className="Chopin">
                     <select className="second-level-select" id="style" name="style" onChange={props.handleStyleDropdown}> 
                         <option value="and">and</option>
-                        <option value="bal">bal</option>
+                        <option value="ballade">ballade</option>
                         <option value="bar">bar</option>
                         <option value="ber">ber</option>
                         <option value="bol">bol</option>
@@ -42,6 +42,7 @@ const StyleDropdown = (props) => {
                         <option value="sonata">sonata</option>
                         <option value="tar">tar</option>
                         <option value="val">val</option>
+                        <option value="waltz">waltz</option>
                     </select>
                 </div>
             </div>
