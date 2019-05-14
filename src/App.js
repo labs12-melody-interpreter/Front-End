@@ -3,7 +3,7 @@ import StyleDropdown from "./components/StyleDropdown"
 import axios from "axios"
 import MidiPiano from "./components/MidiPiano"
 import ToneJS from "./components/ToneJS"
-import MusicLib from ./components/MusicLibb"
+import MusicLib from "./components/MusicLib"
 
 class App extends Component {
   constructor() {
