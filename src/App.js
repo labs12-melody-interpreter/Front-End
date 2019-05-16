@@ -24,7 +24,7 @@ class App extends Component {
     //http://localhost:5000/generator/
     //https://music-interpolator-backend.herokuapp.com/generator/
     //https://musicinterpolatorbackend-env-1.n8t342ngdz.us-east-2.elasticbeanstalk.com/generator/ *AWS Not working
-    axios.post("https://musicinterpolatorbackend-env-1.n8t342ngdz.us-east-2.elasticbeanstalk.com/generator/", this.state,
+    axios.post("http://musicinterpolatorbackend-env-1.n8t342ngdz.us-east-2.elasticbeanstalk.com/generator/", this.state,
     {
       responseType: 'blob',
     })
