@@ -8,7 +8,7 @@ const gain = new Tone.Gain(0.5);
 gain.toMaster();
 synth.connect(gain);
 
-const player = new Tone.Player('./ForestGump.mp3').toMaster()
+const player = new Tone.Player('./scherzo_test_output.mp3').toMaster()
 /*
 Tone.Buffer.on('load', () => {
     player.start();
