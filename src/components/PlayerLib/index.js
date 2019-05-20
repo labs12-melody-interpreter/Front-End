@@ -1,76 +1,44 @@
-import React, { Component } from "react"
-import Tone from "tone"
-import { } from "@tonejs/ui"
+import React, { Component } from 'react';
+import Tone from 'tone';
+import {} from '@tonejs/ui';
 
-const synth = new Tone.Synth();
-synth.oscillator.type = 'sine';
-const gain = new Tone.Gain(0.5);
-gain.toMaster();
-synth.connect(gain);
-
-const player = new Tone.Player('./scherzo_test_output.mp3').toMaster()
-/*
-Tone.Buffer.on('load', () => {
-    player.start();
-})
-*/
-
-const notes = ['C4','E4','G4','C5','E5','G5'];
-let index=0;
-
-function repeat(time) {
-    let note = notes[index % notes.length ];
-    synth.triggerAttackRelease(note,'8n',time)
-    index++;
-}
-
-
+var songA='./scherzo_test_output.mp3'
+var songB='./ForestGump.mp3'
+var player={}
 class PlayerLib extends Component {
-    constructor(props){
-    super(props)
-
-    this.state = {
-        on: false,
-        }
-    }      
+  constructor(props) {
+    super(props);
+    this.state = { isToggle : true }
     
-    play() { 
-        /*
-        Tone.Transport.scheduleRepeat(time => {
-            repeat(time);
-        }, '8n');
-        Tone.Transport.start() 
-        */
-       player.start()
-    }
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-    stop() { 
-        //Tone.Transport.stop() 
-        player.stop()
-    }
+  handleClick(e) {
+      this.setState(state => ({ isToggle: !state.isToggle}));
+      const play = this.state.isToggle;
 
-
-    toggle = () => {
-        this.setState({
-            on : !this.state.on
-        });
-    }
-    
-    render() {
-        
-        if (this.state.on) {
-            this.play()
-            
-        } else { 
-            this.stop()
-        }
+      if ( play ) { 
+          player = new Tone.Player(e).toMaster();
+          Tone.Buffer.on('load', () => { player.start() });
+      } else { player.stop() }
+    } 
+  
+  render() {
     return (
-        <div>
-            
-            <button onClick={this.toggle}>Play/Stop</button>
-        </div>
-    
-    )}
+      <div>
+          <tr> 
+        <th value={songA} onClick={() => this.handleClick(songA)}>Scherzo</th>
+        </tr>
+        <tr> 
+        <th value={songB} onClick={() => this.handleClick(songB)}>ForestGump</th>
+        </tr>
+        <div></div>
+        <button type="button" onClick={() => this.handleClick(songA)}>
+            {this.state.isToggle ? 'Play' :'Stop' }
+        </button>
+      </div>
+    );
+  }
 }
 
-export default PlayerLib
+export default PlayerLib;
