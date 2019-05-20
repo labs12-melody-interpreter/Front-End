@@ -4,6 +4,8 @@ import { } from "@tonejs/ui"
 import Tone from "tone"
 import MusicLib from "../MusicLib"
 import PlayerLib from "../PlayerLib"
+import NavBar from "../NavBar"
+import MusicList from "../MusicList"
 
 function fileDrop() {
   if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
@@ -96,7 +98,13 @@ class ToneJS extends Component {
             <tone-play-toggle ></tone-play-toggle> 
             {/* <tone-play-toggle disabled id="tone-play-toggle" onClick={ play }/>  */}
             <MusicLib id="tone-play-toggle" play={ play } />
-            <PlayerLib>player</PlayerLib>
+            <PlayerLib></PlayerLib>
+            <div>
+              <NavBar></NavBar>
+              <MusicList />
+            </div>
+            
+         
           </tone-content>
         </div>
       );
