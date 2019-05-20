@@ -28,7 +28,7 @@ class PlayPause extends Component {
     
     return(
       <Motion
-        style={{scale: spring(toggle ? 1 : 0, [1000, 30])}}
+        style={{scale: spring(toggle ? 1 : 0, [1000, 100])}}
       >
         {({scale}) =>
           <button
