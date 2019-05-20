@@ -3,6 +3,9 @@ import StyleDropdown from "./components/StyleDropdown"
 import axios from "axios"
 import MidiPiano from "./components/MidiPiano"
 import ToneJS from "./components/ToneJS"
+import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 
 class App extends Component {
@@ -15,6 +18,7 @@ class App extends Component {
       model: "128"
     }
   }
+
   handleChange = (event) => {
     this.setState({note: event.target.value});
   }
@@ -65,22 +69,23 @@ class App extends Component {
     return (
       <div>
         <form action = "/generator/" method = "POST">
-              <input id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
-              <button id="note-button" onClick={this.handleSubmit}>Submit Note</button>
-              <select id="artist" name="artist" onChange={this.handleArtistDropdown}>
+              <TextField required label="Required" id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
+              <Button variant="default" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
+              <Select id="artist" name="artist" value={this.state.artist} onChange={this.handleArtistDropdown}>
                   <option value="Bach">Bach</option>
+                  <option value="Beethoven">Beethoven</option>
                   <option value="Chopin">Chopin</option>
                   <option value="Mozart">Mozart</option>
-              </select>
-              <select id="model" name="model" value={this.state.model} onChange={this.handleModelDropdown}>
+              </Select>
+              <Select id="model" name="model" value={this.state.model} onChange={this.handleModelDropdown}>
                   <option value="128">128 LSTM</option>
                   <option value="256">256 LSTM</option>
                   <option value="512">512 LSTM</option>
-              </select>
+              </Select>
               <StyleDropdown artist={this.state.artist} handleStyleDropdown={this.handleStyleDropdown} />
-          </form>
-          <ToneJS />
-          <MidiPiano />
+        </form>
+        <ToneJS />
+        <MidiPiano />
       </div>
     );
   }
