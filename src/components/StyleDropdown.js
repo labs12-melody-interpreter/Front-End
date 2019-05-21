@@ -13,7 +13,6 @@ const StyleDropdown = (props) => {
                 <div className="Bach">
                     <select className="second-level-select" id="style" name="style" onChange={props.handleStyleDropdown}>
                         <option value="alla_breve">Alla Breve</option>
-                        <option value="aria">Aria</option>
                         <option value="canzona">Canzona</option>
                         <option value="concerto">Concerto</option>
                         <option value="fantasy_and_fuga">Fantasy and Fuga</option>
