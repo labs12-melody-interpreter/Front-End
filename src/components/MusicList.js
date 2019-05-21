@@ -11,7 +11,7 @@ const client = contentful.createClient({
 })
 class MusicList extends Component {
     state = {
-        musics: [],
+        contentFields: [],
         searchString: ''
     }
     constructor() {
@@ -24,8 +24,8 @@ class MusicList extends Component {
             query: this.state.searchString
         })
         .then((response) => {
-            this.setState({musics: response.items})
-            console.log(this.state.musics)
+            this.setState({contentFields: response.items})
+            console.log(this.state.contentFields)
         })
         .catch((error) => {
             console.log("Error occurred while fetching Entries")
@@ -44,7 +44,7 @@ class MusicList extends Component {
       render() {
         return (
             <div>
-                { this.state.musics ? (
+                { this.state.contentFields ? (
                     <div>
                         <TextField style={{padding: 24}}
                             id="searchInput"
@@ -53,9 +53,9 @@ class MusicList extends Component {
                             onChange={this.onSearchInputChange}
                             />
                         <Grid container spacing={24} style={{padding: 24}}>
-                            { this.state.musics.map(currentMusic => (
+                            { this.state.contentFields.map(currentField => (
                                 <Grid item xs={12} sm={6} lg={4} xl={3}>
-                                    <Music music={currentMusic} />
+                                    <Music music={currentField} />
                                     </Grid>
                             ))}
                         </Grid>
