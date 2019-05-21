@@ -16,7 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 //var songA=""
 var player={}
 
-class Music extends Component {
+class MelodyCard extends Component {
 constructor(props) {
     super(props);
     this.state = { 
@@ -81,4 +81,4 @@ render() {
 } // render
 } // class
 
-export default Music
+export default MelodyCard

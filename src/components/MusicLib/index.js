@@ -9,6 +9,7 @@ class MusicLib extends Component {
       isPlaying: false
     }
   }
+
   render() {
     const { isPlaying } = this.state
     return (
@@ -17,6 +18,7 @@ class MusicLib extends Component {
           toggle={isPlaying}
           animate={() => this.setState({isPlaying: !isPlaying})}
           play={this.props.play}
+          stop={this.stop}
         />
       </div>
     )
