@@ -59,7 +59,7 @@ render() {
                     </Typography>
                     <Typography component="p">
                         {props.music.fields.description}<br></br>
-                        {(props.music.fields.musicSong.fields.file.url).substr(-15)}
+                        {(props.music.fields.musicSong.fields.file.url).split('/').pop()}
                        
                     </Typography>
                     </CardContent>
