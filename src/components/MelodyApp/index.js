@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import * as contentful from 'contentful'
-import Music from '../components/Music'
+import MelodyCard from './MelodyCard'
+import NavBar from './NavBar'
+
+
 const SPACE_ID = 'viwz6ijsgmv0'
-const ACCESS_TOKEN = 'oHtYpNeS0GEfn2ytvKJeBY1heSHNpZSabBXh_Ck-tA0'
+//const ACCESS_TOKEN = 'oHtYpNeS0GEfn2ytvKJeBY1heSHNpZSabBXh_Ck-tA0'
+//const SPACE_ID = 'viwz6ijsgmv0'
+const ACCESS_TOKEN = 'w3GgVeFeFLYkCfJCIsHfo0SG44cH4ToUuDpRYM2lMJk'
 const client = contentful.createClient({
     space: SPACE_ID,
     accessToken: ACCESS_TOKEN
 })
-class MusicList extends Component {
+class MelodyApp extends Component {
     state = {
         contentFields: [],
         searchString: ''
@@ -44,6 +49,7 @@ class MusicList extends Component {
       render() {
         return (
             <div>
+            <NavBar></NavBar>
                 { this.state.contentFields ? (
                     <div>
                         <TextField style={{padding: 24}}
@@ -55,7 +61,7 @@ class MusicList extends Component {
                         <Grid container spacing={24} style={{padding: 24}}>
                             { this.state.contentFields.map(currentField => (
                                 <Grid item xs={12} sm={6} lg={4} xl={3}>
-                                    <Music music={currentField} />
+                                    <MelodyCard music={currentField} />
                                     </Grid>
                             ))}
                         </Grid>
@@ -65,4 +71,4 @@ class MusicList extends Component {
         )
     }
 }
-export default MusicList;
+export default MelodyApp;

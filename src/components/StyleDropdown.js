@@ -1,7 +1,4 @@
 import React from "react"
-import Select from '@material-ui/core/Select';
-
-
 
 const StyleDropdown = (props) => {
     if (!props.artist) {

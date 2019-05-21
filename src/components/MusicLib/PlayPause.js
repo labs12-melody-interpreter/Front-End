@@ -18,6 +18,8 @@ class PlayPause extends Component {
     this.props.play()
   }
 
+  
+
   onClickPlay = event => {
     this.animate().then(this.play)
   }
@@ -32,7 +34,7 @@ class PlayPause extends Component {
           <button
             type="button"
             className="play-pause"
-            onClick={this.onClickPlay}
+            onClick={toggle ? this.onClickPlay : this.props.stop }
           >
             <span
               className="play-pause__playhead"
