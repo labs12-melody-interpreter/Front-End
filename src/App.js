@@ -1,67 +1,73 @@
 import React, { Component } from "react"
-import StyleDropdown from "./components/StyleDropdown"
-import axios from "axios"
+import { Route, NavLink } from 'react-router-dom';
 import MidiPiano from "./components/MidiPiano"
+import UserInput from "./components/UserInput";
+import MelodyApp from "./components/MelodyApp"
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import withState from 'recompose/withState';
+import toRenderProps from 'recompose/toRenderProps';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
+const WithState = toRenderProps(withState('anchorEl', 'updateAnchorEl', null));
+
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      artist: "Bach",
-      note: "",
-      style: ""
-    }
-  }
-  handleChange = (event) => {
-    this.setState({note: event.target.value});
-  }
   
-  handleSubmit = (event) => {
-    event.preventDefault()
-    const FileDownload = require('js-file-download');
-    //http://localhost:5000/generator/
-    axios.post("https://music-interpolator-backend.herokuapp.com/generator/", this.state,
-    {
-      responseType: 'blob',
-    })
-    .then((res)=>{
-      console.log(res.data, "res.data")
-      FileDownload(res.data,'test_output.mid')
-      
-    })
-    .catch((error) => {
-        // ...
-    });
-  }
- 
 
-  handleArtistDropdown = (event) => {
-    event.preventDefault()
-    this.setState({
-      artist: event.target.value
-    })
-  }
-  handleStyleDropdown = (event) => {
-    event.preventDefault()
-    this.setState({
-      style: event.target.value
-    })
-  }
   render() {
     console.log(this.state)
     return (
       <div>
-        <form action = "/generator/" method = "POST">
-              <input id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
-              <button id="note-button" onClick={this.handleSubmit}>Submit Note</button>
-              <select id = "artist" name="artist" onChange={this.handleArtistDropdown}>
-                  <option value="Bach">Bach</option>
-                  <option value="Chopin">Chopin</option>
-                  <option value="Mozart">Mozart</option>
-              </select>
-              <StyleDropdown artist={this.state.artist} handleStyleDropdown={this.handleStyleDropdown} />
-          </form>
-          <MidiPiano />
+        <AppBar position="static">
+          <Toolbar variant="dense">
+            
+            <WithState>
+              {({ anchorEl, updateAnchorEl }) => {
+                const open = Boolean(anchorEl);
+                const handleClose = () => {
+                  updateAnchorEl(null);
+                };
+                return (
+              <React.Fragment>
+                <IconButton 
+                  aria-owns={open ? 'render-props-menu' : undefined}
+                  aria-haspopup="true"
+                  onClick={event => {
+                    updateAnchorEl(event.currentTarget);
+                  }}
+                  >
+                  <MenuIcon/>
+
+                </IconButton>
+                <Menu id="render-props-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>          
+                  <MenuItem onClick={handleClose} containerElement={<NavLink to='/generator/'>Generator</NavLink>}>
+                    <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/generator/">Generator</NavLink>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} containerElement={<NavLink to='/generator/'>Generator</NavLink>}>
+                    <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/library">Library</NavLink>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} containerElement={<NavLink to='/generator/'>Generator</NavLink>}>
+                    <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/">Main Menu</NavLink>
+                  </MenuItem>
+                </Menu>
+                
+                <Typography variant="h6" color="inherit">
+                Melody Interpolator
+                </Typography>
+              </React.Fragment>
+                  )
+                }}
+            </WithState>
+          </Toolbar>
+        </AppBar>
+        <Route path='/piano' component={MidiPiano}/>
+        <Route path='/library' component={MelodyApp} />
+        <Route path='/generator' component={UserInput} />
       </div>
     );
   }
