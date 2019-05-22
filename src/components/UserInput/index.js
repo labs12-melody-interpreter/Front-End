@@ -64,7 +64,7 @@ class UserInput extends Component {
           return ( 
               <form action = "/generator/" method = "POST">
                     <TextField required label="Required" id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
-                    <Button variant="default" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
+                    <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
                     <Select id="artist" name="artist" value={this.state.artist} onChange={this.handleArtistDropdown}>
                         <option value="Bach">Bach</option>
                         <option value="Beethoven">Beethoven</option>
