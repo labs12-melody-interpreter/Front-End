@@ -36,6 +36,7 @@ function parseFile(file){
   reader.onload = function(e){
     const midi = new Midi(e.target.result)
     currentMidi = midi
+    //document.querySelector('Button').removeAttribute('disabled')
   }
   reader.readAsArrayBuffer(file)
 }
@@ -65,12 +66,11 @@ class ToneJS extends Component {
           }
         }).toMaster()
         track.notes.forEach(note => {
-          console.log('inside track note',note.name,note.duration,note.time, note.velocity)
+          //console.log('inside track note',note.name,note.duration,note.time, note.velocity)
           this.synth.triggerAttackRelease(note.name, note.duration, note.time, note.velocity)
         })
       })
     } else {
-     console.log('before dispose')
         this.synth.dispose()
       }
   } 
@@ -88,7 +88,7 @@ class ToneJS extends Component {
             </div>
             
             
-            <Button id='playStop' disabled variant="contained" color="primary" onClick={() => this.handleClick()}>
+            <Button id='playStop'  variant="contained" color="primary" onClick={() => this.handleClick()}>
             {this.state.isToggle ? 'Play' :'Stop' }
         </Button>
          
