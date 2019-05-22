@@ -76,7 +76,7 @@ class UserInput extends Component {
                         <option value="256">256 LSTM</option>
                         <option value="512">512 LSTM</option>
                     </Select>
-                    <StyleDropdown artist={this.state.artist} handleStyleDropdown={this.handleStyleDropdown} />
+                    <StyleDropdown artist={this.state.artist} style={this.state.style} handleStyleDropdown={this.handleStyleDropdown} />
               </form>
            );
       }
