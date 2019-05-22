@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import  Midi  from "@tonejs/midi"
 import { } from "@tonejs/ui"
 import Tone from "tone"
+import Button from "@material-ui/core/Button"
 
 function fileDrop() {
   if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
@@ -87,9 +88,9 @@ class ToneJS extends Component {
             </div>
             
             
-            <button type="button" onClick={() => this.handleClick()}>
+            <Button id='playStop' disabled variant="contained" color="primary" onClick={() => this.handleClick()}>
             {this.state.isToggle ? 'Play' :'Stop' }
-        </button>
+        </Button>
          
           </tone-content>
         </div>
