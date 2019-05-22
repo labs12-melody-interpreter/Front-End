@@ -54,7 +54,8 @@ class ToneJS extends Component {
     this.setState(state => ({ isToggle: !state.isToggle}));
     const playing = this.state.isToggle;
 
-    if ( playing ) { 
+    if (currentMidi){
+      if ( playing ) { 
       currentMidi.tracks.forEach(track => {
         //create a synth for each track
         this.synth = new Tone.PolySynth(10, Tone.Synth, {
@@ -70,9 +71,11 @@ class ToneJS extends Component {
           this.synth.triggerAttackRelease(note.name, note.duration, note.time, note.velocity)
         })
       })
-    } else {
-        this.synth.dispose()
+      } else {
+        this.synth.disconnect()
+        //this.synth.dispose()
       }
+    }
   } 
   render() {
     return (
