@@ -12,8 +12,14 @@ const About = () => {
             </h4>
             <ul>
               <li>A Apte</li> 
+              <img src={require('./img/aapte.png')} alt="pic of a" width='170px'/>
+
               <li>Joshua Solis</li> 
-              <li>Tony Tia</li>  
+              <img src={require('./img/jsolis.png')} alt="pic of josh" width='170px'/>
+
+              <li>Tony Tia</li>
+              <img src={require('./img/ttia.png')} alt="pic of tony" width='170px'/>
+
             </ul>
         </div>
      );
