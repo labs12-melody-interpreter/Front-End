@@ -1,5 +1,5 @@
 import React from 'react'
-import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano';
+import { Piano, MidiNumbers } from 'react-piano';
 import 'react-piano/dist/styles.css';
 
 import DimensionsProvider from './DimensionsProvider';
@@ -14,14 +14,16 @@ const noteRange = {
   first: MidiNumbers.fromNote('c3'),
   last: MidiNumbers.fromNote('f5'),
 };
+/*
 const keyboardShortcuts = KeyboardShortcuts.create({
   firstNote: noteRange.first,
   lastNote: noteRange.last,
   keyboardConfig: KeyboardShortcuts.HOME_ROW,
 });
+*/
 
 const MidiPiano = () => {
-
+/*
     const firstNote = MidiNumbers.fromNote('c3');
     const lastNote = MidiNumbers.fromNote('f5');
     const keyboardShortcuts = KeyboardShortcuts.create({
@@ -29,14 +31,24 @@ const MidiPiano = () => {
         lastNote: lastNote,
         keyboardConfig: KeyboardShortcuts.HOME_ROW,
     });
-
+*/
     return ( 
+        /*
         <div>
             <Piano
                 noteRange={{ first: firstNote, last: lastNote }}
                 playNote={(midiNumber) => {
                     console.log(midiNumber.MidiNumbers)
+                    //import('./moduleA')
+                    //.then(({ moduleA }) => {
+                        // Use moduleA
+                    //})
+                    //.catch(err => {
+                        // Handle failure
+                    //});
+                    
                     // Play a given note - see notes below
+                    //synth.play(midiNumber)
                 }}
                 stopNote={(midiNumber) => {
                     // Stop playing a given note - see notes below
@@ -44,11 +56,12 @@ const MidiPiano = () => {
                 width={1000}
                 keyboardShortcuts={keyboardShortcuts}
             />
+            */
             <div className="mt-5">
                 <p>Piano with custom styling - see styles.css</p>
                 <ResponsivePiano className="PianoDarkTheme" />
             </div>
-        </div>
+        //</div>
      );
 }
  
@@ -67,6 +80,7 @@ function ResponsivePiano(props) {
                 playNote={playNote}
                 stopNote={stopNote}
                 disabled={isLoading}
+                activeNotes={[44,45,51]}
                 {...props}
               />
             )}

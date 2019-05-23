@@ -1,0 +1,119 @@
+
+import React, { Component } from 'react';
+import Tone from 'tone';
+import {} from '@tonejs/ui';
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import IconButton from '@material-ui/core/IconButton';
+import { withStyles, Theme, createStyles, WithStyles, WithTheme } from '@material-ui/core/styles';
+import { ButtonBase } from '@material-ui/core';
+
+
+
+const styles = theme => ({
+    card: {
+      display: 'flex',
+    },
+    details: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    content: {
+      flex: '1 0 auto',
+    },
+    cover: {
+      width: 151,
+    },
+    controls: {
+      display: 'flex',
+      alignItems: 'center',
+      paddingLeft: theme.spacing.unit,
+      paddingBottom: theme.spacing.unit,
+    },
+    playIcon: {
+      height: 38,
+      width: 38,
+    },
+  });
+
+  
+
+ function MediaControlCard(props) {
+    const { classes, theme } = props;
+  
+     return (
+        <div className={classes.controls}>
+          <IconButton aria-label="Previous">
+            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+          </IconButton>
+          <IconButton aria-label="Play/pause">
+            <PlayArrowIcon className={classes.playIcon} />
+          </IconButton>
+          <IconButton aria-label="Next">
+            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+          </IconButton>
+        </div>
+     )
+
+     }
+     var songA='./scherzo_test_output.mp3'
+    var songB='./ForestGump.mp3'
+    var player={}
+    const handleClick = (e) =>{
+        console.log('handleclick '+e)
+        //this.setState(state => ({ isToggle: !state.isToggle}));
+        //const play = this.state.isToggle;
+  
+       // if ( play ) { 
+            player = new Tone.Player(e).toMaster();
+            Tone.Buffer.on('load', () => { player.start() });
+        //} else { player.stop() }
+      } 
+
+const Music = (props) => {
+    console.log(props)
+    return(
+        <div>
+            { props.music ? (
+                <Card >
+                             
+                    <CardMedia style={{height: 0, paddingTop: '56.25%'}}
+                                        image={props.music.fields.musicImage.fields.file.url}
+                                        title={props.music.fields.title}
+                                        />
+                                        <CardContent>
+                                        <Typography gutterBottom variant="headline" component="h2">
+                                            {props.music.fields.title}
+                                        </Typography>
+                                        <Typography component="p">
+                                            {props.music.fields.description}
+                                        </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                        {/*<Button size="small" color="primary" href={props.music.fields.url} target="_blank"> */}
+                 <Button size="small" color="primary" onClick={handleClick(songA)} >
+                                            Go To Music
+                                        </Button>
+                                        <IconButton aria-label="Filter list" onClick={handleClick(songA)}>
+        
+      </IconButton>
+                                        </CardActions>
+                                         
+                                       {/*} <MediaControlCard /> */}
+                                
+                </Card>
+            ) : null}
+        </div>
+    )
+            } // Music
+} // render
+} // class
+
+export default Music
