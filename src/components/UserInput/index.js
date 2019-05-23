@@ -175,7 +175,11 @@ class UserInput extends Component {
                   <StyleDropdown artist={this.state.artist} style={this.state.style} handleStyleDropdown={this.handleStyleDropdown} />
                 </FormControl>
                 
+<<<<<<< HEAD
                 <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit</Button>
+=======
+                <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
+>>>>>>> 70af43662f23905bc1660a749e313c0d0a77d38c
               </form>
               <h4>Step 3: Wait 30-60 seconds for the AI to generate a music file and download</h4>
               <h4>Step 4: Click and load the music file below and hit play!</h4>
