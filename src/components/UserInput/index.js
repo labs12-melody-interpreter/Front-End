@@ -4,6 +4,7 @@ import StyleDropdown from "../StyleDropdown"
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import ToneJS from '../ToneJS';
 
 class UserInput extends Component {
     constructor() {
@@ -62,9 +63,10 @@ class UserInput extends Component {
       }
       render() {
           return ( 
+            <div align="center">
               <form action = "/generator/" method = "POST">
                     <TextField required label="Required" id="note-input" type="text" name="note" value={this.state.note} onChange={this.handleChange} />
-                    <Button variant="default" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
+                    <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
                     <Select id="artist" name="artist" value={this.state.artist} onChange={this.handleArtistDropdown}>
                         <option value="Bach">Bach</option>
                         <option value="Beethoven">Beethoven</option>
@@ -78,6 +80,8 @@ class UserInput extends Component {
                     </Select>
                     <StyleDropdown artist={this.state.artist} style={this.state.style} handleStyleDropdown={this.handleStyleDropdown} />
               </form>
+              <ToneJS></ToneJS>
+            </div>
            );
       }
 }
