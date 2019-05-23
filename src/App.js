@@ -46,13 +46,13 @@ class App extends Component {
                 </IconButton>
                 <Menu id="render-props-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>          
                   <MenuItem onClick={handleClose}>
+                    <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/">Home</NavLink>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
                     <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/generator/">Generator</NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/library">Library</NavLink>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <NavLink style={{margin: "10px", textDecoration:'none', color:'unset'}} to="/">Main Menu</NavLink>
                   </MenuItem>
                 </Menu>
                 
