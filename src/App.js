@@ -67,7 +67,7 @@ class App extends Component {
         </AppBar>
         <Route path='/piano' component={MidiPiano}/>
         <Route path='/library' component={MelodyApp} />
-        <Route path='/generator' component={UserInput} />
+        <Route path='/generator/' component={UserInput} />
       </div>
     );
   }
