@@ -83,17 +83,19 @@ class UserInput extends Component {
 
                 </FormControl>
                 <h4>Step 2: Pick a model to generate notes then hit Submit</h4>
-                <FormControl style={{ minWidth: '80px'}}>
-                  <InputLabel>LSTM</InputLabel>
-                  <Select id="model" name="model" value={this.state.model} onChange={this.handleModelDropdown}>
-                    <MenuItem value="128">128 LSTM</MenuItem>
-                    <MenuItem value="256">256 LSTM</MenuItem>
-                    <MenuItem value="512">512 LSTM</MenuItem>
-                  </Select>
-                  
-                </FormControl>
-                
-                <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit</Button>
+                <div className="flex-align">
+                  <FormControl style={{ minWidth: '80px'}}>
+                    <InputLabel>LSTM</InputLabel>
+                    <Select id="model" name="model" value={this.state.model} onChange={this.handleModelDropdown}>
+                      <MenuItem value="128">128 LSTM</MenuItem>
+                      <MenuItem value="256">256 LSTM</MenuItem>
+                      <MenuItem value="512">512 LSTM</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl style={{ margin: '15px 0 0 15px'}}>
+                    <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit</Button>
+                  </FormControl>
+                </div>
               </form>
               <h4>Step 3: Wait 30-60 seconds for the AI to generate a music file and download</h4>
               <h4>Step 4: Click and load the music file below and hit play!</h4>
