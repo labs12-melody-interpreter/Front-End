@@ -96,7 +96,6 @@ class UserInput extends Component {
                 </FormControl>
                 
                 <Button variant="contained" color="primary" id="note-button" onClick={this.handleSubmit}>Submit Note</Button>
-
               </form>
               <h4>Step 3: Wait 30-60 seconds for the AI to generate a music file</h4>
               <h4>Step 4: Click and drag the music file below and hit play!</h4>
