@@ -12,6 +12,7 @@ import withState from 'recompose/withState';
 import toRenderProps from 'recompose/toRenderProps';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import About from "./components/About";
 
 const WithState = toRenderProps(withState('anchorEl', 'updateAnchorEl', null));
 
@@ -68,6 +69,7 @@ class App extends Component {
         <Route path='/piano' component={MidiPiano}/>
         <Route path='/library' component={MelodyApp} />
         <Route path='/generator/' component={UserInput} />
+        <Route exact path='/' component={About} />
       </div>
     );
   }
