@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const StyleDropdown = props => {
   if (!props.artist) {
-    return <h1>Loading...</h1>;
+    return <h5>Populated upon artist selction</h5>;
   }
   if (props.artist === 'Bach') {
     return (
