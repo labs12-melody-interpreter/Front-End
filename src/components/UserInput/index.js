@@ -34,7 +34,7 @@ class UserInput extends Component {
         })
         .then((res)=>{
           console.log(res.data, "res.data")
-          FileDownload(res.data, this.state.artist+"_"+this.state.style+"_"+this.state.note+"_"+this.state.model+".mid")
+          FileDownload(res.data, this.state.artist+"_"+this.state.style+"_"+this.state.model+".mid")
           
         })
         .catch((error) => {
@@ -65,7 +65,6 @@ class UserInput extends Component {
       }
       render() {
           return ( 
-
 
             <div align="center">
               <h2>Create an AI generated song from scratch</h2>
