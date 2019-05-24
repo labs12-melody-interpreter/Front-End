@@ -1,95 +1,147 @@
-import React from "react"
+import React from 'react';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
-const StyleDropdown = (props) => {
-    if (!props.artist) {
-        return <h1>Loading...</h1>
-    } 
-    if (props.artist === "Bach") {
-        return (
-            <div className="container">
-                <div className="Bach">
-                    <select className="second-level-select" id="style" name="style" onChange={props.handleStyleDropdown}>
-                        <option value="alla_breve">Alla Breve</option>
-                        <option value="canzona">Canzona</option>
-                        <option value="concerto">Concerto</option>
-                        <option value="fantasy_and_fuga">Fantasy and Fuga</option>
-                        <option value="fugue">Fugue</option>
-                        <option value="kleines">Kleines</option>
-                        <option value="passacaglia">Passacaglia</option>
-                        <option value="pastorale">Pastorale</option>
-                        <option value="pedale">Pedale</option>
-                        <option value="sonata">Sonata</option>
-                        <option value="toccata_and_fuga">Toccata and Fuga</option>
-                    </select>
-                </div>
-            </div>
-        )
-    } if (props.artist === "Beethoven") {
-        return (
-            <div className="container">
-                <div className="Beethoven">
-                    <select className="second-level-select" id="style" name="style" onChange={props.handleStyleDropdown}>
-                        <option value="allegretto">Allegretto</option>
-                        <option value="andante">Andante</option>
-                        <option value="bagatelles">Bagatelles</option>
-                        <option value="canon">Canon</option>
-                        <option value="fantast">Fantasy</option>
-                        <option value="polonaise">Polonaise</option>
-                        <option value="rondo">Rondo</option>
-                    </select>
-                </div>
-            </div>
-        )
-    } if (props.artist === "Chopin") {
-        return (
-            <div className="container">
-                <div className="Chopin">
-                    <select className="second-level-select" id="style" name="style" onChange={props.handleStyleDropdown}> 
-                        <option value="and">and</option>
-                        <option value="ballade">Ballade</option>
-                        <option value="bar">bar</option>
-                        <option value="ber">ber</option>
-                        <option value="bol">bol</option>
-                        <option value="conc">conc</option>
-                        <option value="eco">eco</option>
-                        <option value="etu">etu</option>
-                        <option value="fan">fan</option>
-                        <option value="fun">fun</option>
-                        <option value="imp">imp</option>
-                        <option value="maz">maz</option>
-                        <option value="nocturne">Nocturne</option>
-                        <option value="nou">nou</option>
-                        <option value="polonaise">Polonaise</option>
-                        <option value="pre">pre</option>
-                        <option value="ron">ron</option>
-                        <option value="scherzo">Scherzo</option>
-                        <option value="sonata">Sonata</option>
-                        <option value="tar">tar</option>
-                        <option value="val">val</option>
-                        <option value="waltz">Waltz</option>
-                    </select>
-                </div>
-            </div>
-        )
-    } if (props.artist === "Mozart") {
-        return (
-            <div className="container">
-                <div className="Mozart">
-                    <select className="second-level-select" id="style" name="style" value="style" onChange={props.handleStyleDropdown}>
-                        <option value="alla_turca">Alla Turca</option>
-                        <option value="diea_irae">Diea Irae</option>
-                        <option value="eine_kleine">Eine Kleine</option>
-                        <option value="menuett">Menuett</option>
-                        <option value="piccola">Piccola</option>
-                        <option value="rondo">Rondo</option>
-                        <option value="sinfonia">Sinfonia</option>
-                        <option value="sonata">Sonata</option>
-                        <option value="symphonia">Symphonia</option>
-                    </select>
-                </div>
-            </div>
-        )
-    }
-}
- 
+const StyleDropdown = props => {
+  if (!props.artist) {
+    return <h5>Populated upon artist selction</h5>;
+  }
+  if (props.artist === 'Bach') {
+    return (
+      <div className="container">
+        <FormControl className="Bach" style={{ minWidth: '160px' }}>
+          <InputLabel htmlFor="style-simple">Style</InputLabel>
+          <Select
+            className="second-level-select"
+            id="style"
+            name="style"
+            value={props.style}
+            onChange={props.handleStyleDropdown}
+            inputProps={{
+              name: 'style',
+              id: 'style-simple',
+            }}
+          >
+            <MenuItem value="alla_breve">Alla Breve</MenuItem>
+            <MenuItem value="canzona">Canzona</MenuItem>
+            <MenuItem value="concerto">Concerto</MenuItem>
+            <MenuItem value="fantasy_and_fuga">Fantasy and Fuga</MenuItem>
+            <MenuItem value="fugue">Fugue</MenuItem>
+            <MenuItem value="kleines">Kleines</MenuItem>
+            <MenuItem value="passacaglia">Passacaglia</MenuItem>
+            <MenuItem value="pastorale">Pastorale</MenuItem>
+            <MenuItem value="pedale">Pedale</MenuItem>
+            <MenuItem value="sonata">Sonata</MenuItem>
+            <MenuItem value="toccata_and_fuga">Toccata and Fuga</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+    );
+  }
+  if (props.artist === 'Beethoven') {
+    return (
+      <div className="container">
+        <FormControl className="Beethoven" style={{ minWidth: '160px' }}>
+          <InputLabel htmlFor="style-simple">Style</InputLabel>
+          <Select
+            className="second-level-select"
+            id="style"
+            name="style"
+            value={props.style}
+            onChange={props.handleStyleDropdown}
+            inputProps={{
+              name: 'style',
+              id: 'style-simple',
+            }}
+          >
+            <MenuItem value="allegretto">Allegretto</MenuItem>
+            <MenuItem value="andante">Andante</MenuItem>
+            <MenuItem value="bagatelles">Bagatelles</MenuItem>
+            <MenuItem value="canon">Canon</MenuItem>
+            <MenuItem value="fantast">Fantasy</MenuItem>
+            <MenuItem value="polonaise">Polonaise</MenuItem>
+            <MenuItem value="rondo">Rondo</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+    );
+  }
+  if (props.artist === 'Chopin') {
+    return (
+      <div className="container">
+        <FormControl className="Chopin" style={{ minWidth: '160px' }}>
+          <InputLabel htmlFor="style-simple">Style</InputLabel>
+          <Select
+            className="second-level-select"
+            id="style"
+            name="style"
+            value={props.style}
+            onChange={props.handleStyleDropdown}
+            inputProps={{
+              name: 'style',
+              id: 'style-simple',
+            }}
+          >
+            <MenuItem value="and">and</MenuItem>
+            <MenuItem value="ballade">Ballade</MenuItem>
+            <MenuItem value="bar">bar</MenuItem>
+            <MenuItem value="ber">ber</MenuItem>
+            <MenuItem value="bol">bol</MenuItem>
+            <MenuItem value="conc">conc</MenuItem>
+            <MenuItem value="eco">eco</MenuItem>
+            <MenuItem value="etu">etu</MenuItem>
+            <MenuItem value="fan">fan</MenuItem>
+            <MenuItem value="fun">fun</MenuItem>
+            <MenuItem value="imp">imp</MenuItem>
+            <MenuItem value="maz">maz</MenuItem>
+            <MenuItem value="nocturne">Nocturne</MenuItem>
+            <MenuItem value="nou">nou</MenuItem>
+            <MenuItem value="polonaise">Polonaise</MenuItem>
+            <MenuItem value="pre">pre</MenuItem>
+            <MenuItem value="ron">ron</MenuItem>
+            <MenuItem value="scherzo">Scherzo</MenuItem>
+            <MenuItem value="sonata">Sonata</MenuItem>
+            <MenuItem value="tar">tar</MenuItem>
+            <MenuItem value="val">val</MenuItem>
+            <MenuItem value="waltz">Waltz</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+    );
+  }
+  if (props.artist === 'Mozart') {
+    return (
+      <div className="container">
+        <FormControl className="Mozart" style={{ minWidth: '160px' }}>
+          <InputLabel htmlFor="style-simple">Style</InputLabel>
+
+          <Select
+            className="second-level-select"
+            id="style"
+            name="style"
+            value={props.style}
+            onChange={props.handleStyleDropdown}
+            inputProps={{
+              name: 'style',
+              id: 'style-simple',
+            }}
+          >
+            <MenuItem value="alla_turca">Alla Turca</MenuItem>
+            <MenuItem value="diea_irae">Diea Irae</MenuItem>
+            <MenuItem value="eine_kleine">Eine Kleine</MenuItem>
+            <MenuItem value="menuett">Menuett</MenuItem>
+            <MenuItem value="piccola">Piccola</MenuItem>
+            <MenuItem value="rondo">Rondo</MenuItem>
+            <MenuItem value="sinfonia">Sinfonia</MenuItem>
+            <MenuItem value="sonata">Sonata</MenuItem>
+            <MenuItem value="symphonia">Symphonia</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+    );
+  }
+};
+
 export default StyleDropdown;
