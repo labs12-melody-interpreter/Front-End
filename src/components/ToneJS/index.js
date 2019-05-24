@@ -3,7 +3,6 @@ import  Midi  from "@tonejs/midi"
 import { } from "@tonejs/ui"
 import Tone from "tone"
 import Button from "@material-ui/core/Button"
-
 function fileDrop() {
   if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
     document.querySelector("#FileDrop #Text").textContent = "Reading files not supported by this browser";
@@ -15,14 +14,12 @@ function fileDrop() {
         const file = files[0]
         var msg = "Hit  Play  below to play := " + file.name
         document.querySelector("#FileDrop #Text").textContent = msg
-
         parseFile(file)
       }
     })
   }
 }
 let currentMidi = null
-
 function parseFile(file){
   //read the file
   const reader = new FileReader()
@@ -33,9 +30,6 @@ function parseFile(file){
   }
   reader.readAsArrayBuffer(file)
 }
-
-
-
 class ToneJS extends Component {
   constructor(props){
     super(props)
@@ -49,8 +43,7 @@ class ToneJS extends Component {
     this.setState(state => ({ isToggle: !state.isToggle}));
     const playing = this.state.isToggle;
 console.log('here',currentMidi, playing)
-
-    //if (currentMidi){
+    if (currentMidi){
       if ( playing ) { 
       currentMidi.tracks.forEach(track => {
         //create a synth for each track
@@ -71,7 +64,7 @@ console.log('here',currentMidi, playing)
         this.synth.disconnect()
         //this.synth.dispose()
       } 
-    //}
+    }
   } 
   fileDropper = () => {
     fileDrop()
