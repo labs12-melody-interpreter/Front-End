@@ -26,6 +26,10 @@ const About = () => {
                 <p>Tony Tia</p>
                 <img src={require('./img/ttia.png')} alt="pic of tony" width='170px'/>
               </div>
+              <div>
+                <p>Blake Fletcher</p>
+                <img src={require('./img/bfletcher.png')} alt="pic of blake" width='170px'/>
+              </div>
             </div>
         </div>
      );
